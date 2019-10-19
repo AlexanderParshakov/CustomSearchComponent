@@ -12,4 +12,5 @@ enum Constants {
     static let searchBarPlaceholder = "Поиск"
     static let loaderName = "loadingAnimation"
     static let animationDuration = 0.3
+    
 }
