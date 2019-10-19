@@ -35,6 +35,11 @@ class CustomSearchBar: UITextField {
             updateView()
         }
     }
+    @IBInspectable var rightPadding: CGFloat = 0 {
+        didSet {
+            updateView()
+        }
+    }
     @IBInspectable var imageView: UIImageView = UIImageView()
     
     func updateView() {
@@ -50,10 +55,14 @@ class CustomSearchBar: UITextField {
                 width += 7
             }
             
-            let view = UIView(frame: CGRect(x: 0, y: 0, width: width, height: 20))
-            view.addSubview(imageView)
+            let lView = UIView(frame: CGRect(x: 0, y: 0, width: width, height: 20))
+            let rView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 20))
+            let rImageView = UIImageView(frame: CGRect(x: leftPadding, y: 0, width: 10, height: 20))
+            lView.addSubview(imageView)
+            rView.addSubview(rImageView)
             
-            leftView = view
+            leftView = lView
+            rightView = rView
         }
         else {
             leftViewMode = .never

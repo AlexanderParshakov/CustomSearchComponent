@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     }
     
     var searchBarTrailingConstraint = NSLayoutConstraint()
+    var isSearchBarOpen: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,20 +31,30 @@ class ViewController: UIViewController {
     }
     
     func setupScreen() {
-        searchBar.addTarget(self, action: #selector(extendSearchBar), for: .allTouchEvents)
+        searchBar.addTarget(self, action: #selector(extendSearchBar), for: .editingDidBegin)
         animationView.isHidden = true
     }
     func setupConstraints() {
         searchBarTrailingConstraint = NSLayoutConstraint(item: self.searchBar!, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: -10)
     }
     func setupTapRecognizers() {
-        let viewTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(extendSearchBar))
+        let leftViewTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(extendSearchBar))
+        leftViewTapRecognizer.numberOfTapsRequired = 1
+        searchBar.leftView?.addGestureRecognizer(leftViewTapRecognizer)
+        let rightViewTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(extendSearchBar))
+        rightViewTapRecognizer.numberOfTapsRequired = 1
+        searchBar.rightView?.addGestureRecognizer(rightViewTapRecognizer)
+        searchBar.rightView?.isUserInteractionEnabled = true
+        let viewTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(shrinkAndLoadWithoutBarAnimation))
         viewTapRecognizer.numberOfTapsRequired = 1
-        searchBar.leftView?.addGestureRecognizer(viewTapRecognizer)
-        //        let viewTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(shrinkAndLoadWithoutBarAnimation))
-        //        viewTapRecognizer.numberOfTapsRequired = 1
-        //        view.addGestureRecognizer(viewTapRecognizer)
+        view.addGestureRecognizer(viewTapRecognizer)
     }
+}
+
+
+// searchBar management
+extension ViewController {
+    
     @objc func extendSearchBar() {
         self.searchBar.becomeFirstResponder()
         self.view.addConstraint(searchBarTrailingConstraint)
@@ -51,38 +62,32 @@ class ViewController: UIViewController {
         UIView.animate(withDuration: Constants.animationDuration) {
             self.view.layoutIfNeeded()
         }
+        isSearchBarOpen = true
     }
     @objc func shrinkAndLoadWithoutBarAnimation() {
-        loadData()
-        searchBar.resignFirstResponder()
-        clearSearchBar()
-        self.view.layoutIfNeeded()
-    }
-    func shrinkAndLoad() {
-        loadData()
-        clearSearchBar()
-        addRightPadding()
-        UIView.animate(withDuration: Constants.animationDuration) {
+        if isSearchBarOpen {
+            loadData()
+            clearSearchBar()
+            searchBar.resignFirstResponder()
+            searchBar.rightViewMode = .always
             self.view.layoutIfNeeded()
+            isSearchBarOpen = false
         }
     }
-    func clearSearchBar() {
-        self.searchBar.placeholder?.removeAll()
-        self.view.removeConstraint(searchBarTrailingConstraint)
+    func shrinkAndLoad() {
+        if isSearchBarOpen{
+            loadData()
+            clearSearchBar()
+            searchBar.rightViewMode = .always
+            UIView.animate(withDuration: Constants.animationDuration) {
+                self.view.layoutIfNeeded()
+            }
+            isSearchBarOpen = false
+        }
     }
-    func addRightPadding() {
-        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: searchBar.frame.height))
-        searchBar.rightView = paddingView
-        searchBar.rightViewMode = .unlessEditing
-    }
-    func switchResultVisibility() {
-        resultLabel.isHidden = !resultLabel.isHidden
-        animationView.isHidden = !animationView.isHidden
-    }
-    
 }
 
-
+// retrieving data
 extension ViewController {
     
     func loadData() {
@@ -93,17 +98,29 @@ extension ViewController {
             [weak self] (result) in
             switch result {
                 
-            case .success(let data):
-                self?.switchResultVisibility()
-                self?.animationView.stop()
-                self?.resultLabel.text = String(JSON(data)["data"]["listProducts"].count)
+                case .success(let data):
+                    self?.switchResultVisibility()
+                    self?.animationView.stop()
+                    self?.resultLabel.text = String(JSON(data)["data"]["listProducts"].count)
                 
-            case .failure(let error):
-                print("Error: ", error)
+                case .failure(let error):
+                    print("Error: ", error)
             }
         }
     }
     
+}
+
+// correcting UI
+extension ViewController {
+    func clearSearchBar() {
+        self.searchBar.placeholder?.removeAll()
+        self.view.removeConstraint(searchBarTrailingConstraint)
+    }
+    func switchResultVisibility() {
+        resultLabel.isHidden = !resultLabel.isHidden
+        animationView.isHidden = !animationView.isHidden
+    }
 }
 
 
