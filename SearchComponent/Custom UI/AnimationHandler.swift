@@ -9,7 +9,9 @@
 import Foundation
 import Lottie
 
-class AnimationHandler {
+final class AnimationHandler {
+    
+    private init() {}
     
     static func startLottieAnimation(aniView: AnimationView) {
         aniView.animation = Animation.named(Constants.ResourceNames.loaderName)
