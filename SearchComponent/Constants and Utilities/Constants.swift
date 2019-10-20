@@ -8,9 +8,18 @@
 
 import Foundation
 
-enum Constants {
-    static let searchBarPlaceholder = "Поиск"
-    static let loaderName = "loadingAnimation"
-    static let animationDuration = 0.3
+struct Constants {
+    
+    struct ControlLiterals {
+        static let searchBarPlaceholder = "Поиск"
+    }
+    
+    struct ResourceNames {
+        static let loaderName = "loadingAnimation"
+    }
+    
+    struct UISettings {
+        static let searchBarAnimationDuration = 0.3
+    }
     
 }

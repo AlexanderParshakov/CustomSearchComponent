@@ -12,7 +12,7 @@ import Lottie
 class AnimationHandler {
     
     static func startLottieAnimation(aniView: AnimationView) {
-        aniView.animation = Animation.named(Constants.loaderName)
+        aniView.animation = Animation.named(Constants.ResourceNames.loaderName)
         aniView.loopMode = .loop
         aniView.play()
     }

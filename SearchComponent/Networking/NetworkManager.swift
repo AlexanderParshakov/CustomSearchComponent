@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-final class NetworkManager {
+class NetworkManager {
     
     static private let apiURL = "http://iswiftdata.1c-work.net/api/products/searchproductsbycategory"
     
@@ -21,7 +21,7 @@ final class NetworkManager {
     static private let pageNumberIncome = 1
     static private let pageSizeIncome = 12
     
-    static let headers = [
+    static private let headers = [
         "AccessKey": accessKey,
         "IDCategory": idCategory,
         "IDClient": idClient,

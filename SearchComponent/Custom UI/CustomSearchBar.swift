@@ -49,6 +49,8 @@ class CustomSearchBar: UITextField {
             imageView = UIImageView(frame: CGRect(x: leftPadding, y: 0, width: 20, height: 20))
             imageView.image = image
             
+            let rImageView = UIImageView(frame: CGRect(x: leftPadding, y: 0, width: 10, height: 20))
+            
             var width = 20 + leftPadding
             
             if borderStyle == UITextField.BorderStyle.none || borderStyle == UITextField.BorderStyle.line {
@@ -56,12 +58,11 @@ class CustomSearchBar: UITextField {
             }
             
             let lView = UIView(frame: CGRect(x: 0, y: 0, width: width, height: 20))
-            let rView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 20))
-            let rImageView = UIImageView(frame: CGRect(x: leftPadding, y: 0, width: 10, height: 20))
             lView.addSubview(imageView)
-            rView.addSubview(rImageView)
-            
             leftView = lView
+            
+            let rView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 20))
+            rView.addSubview(rImageView)
             rightView = rView
         }
         else {

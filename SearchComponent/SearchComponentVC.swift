@@ -17,36 +17,42 @@ class SearchComponentVC: UIViewController {
     @IBOutlet weak var animationView: AnimationView!
     
     @IBAction func didEndOnExit(_ sender: Any) {
-        shrinkAndLoad()
+        if hasSearchChanged {
+            shrinkAndLoad()
+            previousSearch = searchBar.text!
+        }
     }
     
     var searchBarTrailingConstraint = NSLayoutConstraint()
     var isSearchBarOpen: Bool = false
+    var previousSearch: String = ""
+    var hasSearchChanged: Bool {
+        return previousSearch != searchBar.text!
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupScreen()
+        setupVisibility()
         setupConstraints()
         setupTapRecognizers()
     }
     
-    func setupScreen() {
-        searchBar.addTarget(self, action: #selector(extendSearchBar), for: .editingDidBegin)
+    func setupVisibility() {
         animationView.isHidden = true
     }
     func setupConstraints() {
         searchBarTrailingConstraint = NSLayoutConstraint(item: self.searchBar!, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: -10)
     }
     func setupTapRecognizers() {
+        searchBar.addTarget(self, action: #selector(extendSearchBar), for: .editingDidBegin)
+        
         let leftViewTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(extendSearchBar))
-        leftViewTapRecognizer.numberOfTapsRequired = 1
         searchBar.leftView?.addGestureRecognizer(leftViewTapRecognizer)
+        
         let rightViewTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(extendSearchBar))
-        rightViewTapRecognizer.numberOfTapsRequired = 1
         searchBar.rightView?.addGestureRecognizer(rightViewTapRecognizer)
-        searchBar.rightView?.isUserInteractionEnabled = true
+        
         let viewTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(shrinkAndLoadWithoutBarAnimation))
-        viewTapRecognizer.numberOfTapsRequired = 1
         view.addGestureRecognizer(viewTapRecognizer)
     }
 }
@@ -56,33 +62,42 @@ class SearchComponentVC: UIViewController {
 extension SearchComponentVC {
     
     @objc func extendSearchBar() {
+        defer {
+            isSearchBarOpen = true
+        }
         self.searchBar.becomeFirstResponder()
-        self.view.addConstraint(searchBarTrailingConstraint)
-        self.searchBar.placeholder = Constants.searchBarPlaceholder
-        UIView.animate(withDuration: Constants.animationDuration) {
+        prepareToExtend()
+        UIView.animate(withDuration: Constants.UISettings.searchBarAnimationDuration) {
             self.view.layoutIfNeeded()
         }
-        isSearchBarOpen = true
     }
     @objc func shrinkAndLoadWithoutBarAnimation() {
         if isSearchBarOpen {
-            loadData()
-            clearSearchBar()
+            defer {
+                isSearchBarOpen = false
+            }
+            if hasSearchChanged {
+                loadData()
+                previousSearch = searchBar.text!
+            }
+            prepareToShrink()
             searchBar.resignFirstResponder()
-            searchBar.rightViewMode = .always
             self.view.layoutIfNeeded()
-            isSearchBarOpen = false
         }
     }
     func shrinkAndLoad() {
-        if isSearchBarOpen{
-            loadData()
-            clearSearchBar()
-            searchBar.rightViewMode = .always
-            UIView.animate(withDuration: Constants.animationDuration) {
+        if isSearchBarOpen {
+            defer {
+                isSearchBarOpen = false
+            }
+            if hasSearchChanged {
+                loadData()
+                previousSearch = searchBar.text!
+            }
+            prepareToShrink()
+            UIView.animate(withDuration: Constants.UISettings.searchBarAnimationDuration) {
                 self.view.layoutIfNeeded()
             }
-            isSearchBarOpen = false
         }
     }
 }
@@ -108,14 +123,18 @@ extension SearchComponentVC {
             }
         }
     }
-    
 }
 
 // correcting UI
 extension SearchComponentVC {
-    func clearSearchBar() {
+    func prepareToShrink() {
         self.searchBar.placeholder?.removeAll()
         self.view.removeConstraint(searchBarTrailingConstraint)
+        searchBar.rightViewMode = .always
+    }
+    func prepareToExtend() {
+        self.view.addConstraint(searchBarTrailingConstraint)
+        self.searchBar.placeholder = Constants.ControlLiterals.searchBarPlaceholder
     }
     func switchResultVisibility() {
         resultLabel.isHidden = !resultLabel.isHidden
