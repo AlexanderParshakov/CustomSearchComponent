@@ -10,7 +10,7 @@ import UIKit
 import SwiftyJSON
 import Lottie
 
-class ViewController: UIViewController {
+class SearchComponentVC: UIViewController {
     
     @IBOutlet weak var searchBar: CustomSearchBar!
     @IBOutlet weak var resultLabel: UILabel!
@@ -53,7 +53,7 @@ class ViewController: UIViewController {
 
 
 // searchBar management
-extension ViewController {
+extension SearchComponentVC {
     
     @objc func extendSearchBar() {
         self.searchBar.becomeFirstResponder()
@@ -88,7 +88,7 @@ extension ViewController {
 }
 
 // retrieving data
-extension ViewController {
+extension SearchComponentVC {
     
     func loadData() {
         switchResultVisibility()
@@ -112,7 +112,7 @@ extension ViewController {
 }
 
 // correcting UI
-extension ViewController {
+extension SearchComponentVC {
     func clearSearchBar() {
         self.searchBar.placeholder?.removeAll()
         self.view.removeConstraint(searchBarTrailingConstraint)
