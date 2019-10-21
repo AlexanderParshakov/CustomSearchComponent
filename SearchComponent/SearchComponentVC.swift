@@ -17,10 +17,7 @@ class SearchComponentVC: UIViewController {
     @IBOutlet weak var animationView: AnimationView!
     
     @IBAction func didEndOnExit(_ sender: Any) {
-        if hasSearchChanged {
-            shrinkAndLoad()
-            previousSearch = searchBar.text!
-        }
+        shrinkAndLoad()
     }
     
     var searchBarTrailingConstraint = NSLayoutConstraint()
@@ -32,6 +29,7 @@ class SearchComponentVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // некоторые команды состоят из одной строки, что чуть медленнее, чем при прямой их записи, но это сделано для дальнейшего расширения (на практике его не будет, но в теории -- думаю, что полезно)
         setupVisibility()
         setupConstraints()
         setupTapRecognizers()
@@ -46,20 +44,20 @@ class SearchComponentVC: UIViewController {
     func setupTapRecognizers() {
         searchBar.addTarget(self, action: #selector(extendSearchBar), for: .editingDidBegin)
         
-        let leftViewTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(extendSearchBar))
-        searchBar.leftView?.addGestureRecognizer(leftViewTapRecognizer)
+        let leftViewTap = UITapGestureRecognizer(target: self, action: #selector(extendSearchBar))
+        searchBar.leftView?.addGestureRecognizer(leftViewTap)
         
-        let rightViewTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(extendSearchBar))
-        searchBar.rightView?.addGestureRecognizer(rightViewTapRecognizer)
+        let rightViewTap = UITapGestureRecognizer(target: self, action: #selector(extendSearchBar))
+        searchBar.rightView?.addGestureRecognizer(rightViewTap)
         
-        let viewTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(shrinkAndLoadWithoutBarAnimation))
-        view.addGestureRecognizer(viewTapRecognizer)
+        let viewTap = UITapGestureRecognizer(target: self, action: #selector(shrinkAndLoadWithoutBarAnimation))
+        view.addGestureRecognizer(viewTap)
     }
 }
 
 
-// searchBar management
-extension SearchComponentVC {
+// Search Bar handles
+extension SearchComponentVC: UITextFieldDelegate {
     
     @objc func extendSearchBar() {
         defer {
@@ -78,7 +76,6 @@ extension SearchComponentVC {
             }
             if hasSearchChanged {
                 loadData()
-                previousSearch = searchBar.text!
             }
             prepareToShrink()
             searchBar.resignFirstResponder()
@@ -92,7 +89,6 @@ extension SearchComponentVC {
             }
             if hasSearchChanged {
                 loadData()
-                previousSearch = searchBar.text!
             }
             prepareToShrink()
             UIView.animate(withDuration: Constants.UISettings.searchBarAnimationDuration) {
@@ -117,7 +113,8 @@ extension SearchComponentVC {
                     self?.switchResultVisibility()
                     self?.animationView.stop()
                     self?.resultLabel.text = String(JSON(data)["data"]["listProducts"].count)
-                
+                    
+                    self?.previousSearch = (self?.searchBar.text)!
                 case .failure(let error):
                     print("Error: ", error)
             }
@@ -127,10 +124,16 @@ extension SearchComponentVC {
 
 // correcting UI
 extension SearchComponentVC {
+    
     func prepareToShrink() {
         self.searchBar.placeholder?.removeAll()
         self.view.removeConstraint(searchBarTrailingConstraint)
-        searchBar.rightViewMode = .always
+        if searchBar.text?.count == 0 {
+            searchBar.rightViewMode = .never
+        }
+        else {
+            searchBar.rightViewMode = .always
+        }
     }
     func prepareToExtend() {
         self.view.addConstraint(searchBarTrailingConstraint)
