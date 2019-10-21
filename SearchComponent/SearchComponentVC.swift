@@ -113,8 +113,8 @@ extension SearchComponentVC {
                     self?.switchResultVisibility()
                     self?.animationView.stop()
                     self?.resultLabel.text = String(JSON(data)["data"]["listProducts"].count)
-                    
                     self?.previousSearch = (self?.searchBar.text)!
+                
                 case .failure(let error):
                     print("Error: ", error)
             }
