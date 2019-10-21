@@ -1,12 +1,12 @@
 # Custom Search Component for the task
 
-## Third party libraries being used:
+## Third party libraries in use:
 * Alamofire
 * SwiftyJSON
 * Lottie
 
 ## Usage
 
-Here is the way the app works:
+Here is how the app works:
 
 <img src="Images/Search GIF.gif" width= 300>
