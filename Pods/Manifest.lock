@@ -1,24 +1,28 @@
 PODS:
   - Alamofire (4.9.0)
+  - ANZBreadcrumbsNavigationController (0.6.1)
   - lottie-ios (3.1.3)
   - SwiftyJSON (5.0.0)
 
 DEPENDENCIES:
   - Alamofire
+  - ANZBreadcrumbsNavigationController
   - lottie-ios
   - SwiftyJSON
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - ANZBreadcrumbsNavigationController
     - lottie-ios
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: afc3e7c6db61476cb45cdd23fed06bad03bbc321
+  ANZBreadcrumbsNavigationController: 536dd3865f3aaf91729ae01335b40628bd88e501
   lottie-ios: 496ac5cea1bbf1a7bd1f1f472f3232eb1b8d744b
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 4ab2750a186387a376cd6265168bbc4731f4cddf
+PODFILE CHECKSUM: 7d09dc652a31bf461942fdc62d48e8971cf83be5
 
 COCOAPODS: 1.8.4
