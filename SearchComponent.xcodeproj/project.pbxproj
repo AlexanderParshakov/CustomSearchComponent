@@ -20,8 +20,6 @@
 		A56F239B235B4A18002F7FD6 /* loadingAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = A56F239A235B4A18002F7FD6 /* loadingAnimation.json */; };
 		A56F239D235B5C14002F7FD6 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56F239C235B5C14002F7FD6 /* CustomSearchBar.swift */; };
 		A56F239F235B75E7002F7FD6 /* AnimationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56F239E235B75E7002F7FD6 /* AnimationHandler.swift */; };
-		A5E11B032362548800506DC9 /* CustomClearButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5E11B022362548800506DC9 /* CustomClearButton.xib */; };
-		A5E11B052362571C00506DC9 /* CustomRightViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E11B042362571C00506DC9 /* CustomRightViewButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,8 +39,6 @@
 		A56F239A235B4A18002F7FD6 /* loadingAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loadingAnimation.json; sourceTree = "<group>"; };
 		A56F239C235B5C14002F7FD6 /* CustomSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
 		A56F239E235B75E7002F7FD6 /* AnimationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationHandler.swift; sourceTree = "<group>"; };
-		A5E11B022362548800506DC9 /* CustomClearButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomClearButton.xib; sourceTree = "<group>"; };
-		A5E11B042362571C00506DC9 /* CustomRightViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRightViewButton.swift; sourceTree = "<group>"; };
 		B9090BDB8919C37BF6C91764 /* Pods-SearchComponent.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SearchComponent.release.xcconfig"; path = "Target Support Files/Pods-SearchComponent/Pods-SearchComponent.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,8 +113,6 @@
 			children = (
 				A56F239C235B5C14002F7FD6 /* CustomSearchBar.swift */,
 				A56F239E235B75E7002F7FD6 /* AnimationHandler.swift */,
-				A5E11B022362548800506DC9 /* CustomClearButton.xib */,
-				A5E11B042362571C00506DC9 /* CustomRightViewButton.swift */,
 			);
 			path = "Custom UI";
 			sourceTree = "<group>";
@@ -207,7 +201,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5E11B032362548800506DC9 /* CustomClearButton.xib in Resources */,
 				A51BEC3B235A54860068F039 /* LaunchScreen.storyboard in Resources */,
 				A51BEC38235A54860068F039 /* Assets.xcassets in Resources */,
 				A51BEC46235A64D80068F039 /* Podfile in Resources */,
@@ -265,7 +258,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5E11B052362571C00506DC9 /* CustomRightViewButton.swift in Sources */,
 				A56F239D235B5C14002F7FD6 /* CustomSearchBar.swift in Sources */,
 				A51BEC33235A54840068F039 /* SearchComponentVC.swift in Sources */,
 				A51BEC2F235A54840068F039 /* AppDelegate.swift in Sources */,
