@@ -57,61 +57,38 @@
                                     <action selector="didEndOnExit:" destination="BYZ-38-t0r" eventType="editingDidEndOnExit" id="mZo-rS-ViF"/>
                                 </connections>
                             </textField>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="3zX-hX-IqS">
-                                <rect key="frame" x="295" y="107" width="104" height="34"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="TQ6-aI-OQx">
-                                        <rect key="frame" x="0.0" y="0.0" width="80" height="34"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="80" id="SKn-2q-KXt"/>
-                                        </constraints>
-                                        <state key="normal" title="Очистить">
-                                            <color key="titleColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="onClearClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9lm-R0-lgD"/>
-                                        </connections>
-                                    </button>
-                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clear" translatesAutoresizingMaskIntoConstraints="NO" id="CSB-Av-vxr">
-                                        <rect key="frame" x="88" y="0.0" width="16" height="34"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="16" id="ab8-mr-Pfx"/>
-                                            <constraint firstAttribute="height" constant="34" id="m7v-rq-Vsg"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WCy-dt-vKO">
+                                <rect key="frame" x="284" y="105" width="115" height="34"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="CSB-Av-vxr" secondAttribute="trailing" id="67E-dG-jxY"/>
-                                    <constraint firstItem="TQ6-aI-OQx" firstAttribute="leading" secondItem="3zX-hX-IqS" secondAttribute="leading" id="MRl-PC-l9V"/>
-                                    <constraint firstAttribute="width" constant="104" id="NZQ-yE-bk2"/>
-                                    <constraint firstAttribute="bottom" secondItem="CSB-Av-vxr" secondAttribute="bottom" id="R8T-YD-6cH"/>
-                                    <constraint firstItem="CSB-Av-vxr" firstAttribute="top" secondItem="3zX-hX-IqS" secondAttribute="top" id="T4z-4J-tfb"/>
-                                    <constraint firstItem="TQ6-aI-OQx" firstAttribute="top" secondItem="3zX-hX-IqS" secondAttribute="top" id="gfU-VT-g9J"/>
-                                    <constraint firstAttribute="bottom" secondItem="TQ6-aI-OQx" secondAttribute="bottom" id="k3O-zu-wWD"/>
+                                    <constraint firstAttribute="height" constant="34" id="7tE-Vn-Sr2"/>
+                                    <constraint firstAttribute="width" constant="115" id="kps-8I-08J"/>
                                 </constraints>
-                            </stackView>
+                                <inset key="titleEdgeInsets" minX="-40" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="92" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Очистить" image="clear">
+                                    <color key="titleColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onClearClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3Kg-Me-jyU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="3zX-hX-IqS" firstAttribute="top" secondItem="oWd-cz-xHe" secondAttribute="bottom" constant="7" id="Ild-gy-oYN"/>
+                            <constraint firstItem="WCy-dt-vKO" firstAttribute="top" secondItem="oWd-cz-xHe" secondAttribute="bottom" constant="5" id="6p1-sQ-sAr"/>
                             <constraint firstItem="b1v-92-SFa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LAc-9j-wtQ"/>
                             <constraint firstItem="G2A-IZ-dW0" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="MRW-h9-ywe"/>
                             <constraint firstItem="G2A-IZ-dW0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TiX-ve-F2e"/>
                             <constraint firstItem="b1v-92-SFa" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Um1-5u-Gl0"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WCy-dt-vKO" secondAttribute="trailing" constant="15" id="VY9-Bh-EQa"/>
                             <constraint firstItem="oWd-cz-xHe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="WKG-GW-MPA"/>
-                            <constraint firstItem="3zX-hX-IqS" firstAttribute="top" secondItem="oWd-cz-xHe" secondAttribute="bottom" constant="7" id="b6v-2u-ahu"/>
                             <constraint firstItem="oWd-cz-xHe" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="chX-sJ-QFF"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3zX-hX-IqS" secondAttribute="trailing" constant="15" id="fZ3-4j-2Un"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3zX-hX-IqS" secondAttribute="trailing" constant="15" id="oDx-ed-iwy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="animationView" destination="G2A-IZ-dW0" id="IwK-Ia-mt9"/>
-                        <outlet property="clearButton" destination="TQ6-aI-OQx" id="db9-OF-mzI"/>
-                        <outlet property="clearImage" destination="CSB-Av-vxr" id="Xix-5F-zel"/>
-                        <outlet property="clearStackView" destination="3zX-hX-IqS" id="Wk4-X9-tfg"/>
+                        <outlet property="clearButton" destination="WCy-dt-vKO" id="aHk-b2-xWr"/>
                         <outlet property="resultLabel" destination="b1v-92-SFa" id="dgx-EP-5wj"/>
                         <outlet property="searchBar" destination="oWd-cz-xHe" id="aEG-8x-p3R"/>
                     </connections>

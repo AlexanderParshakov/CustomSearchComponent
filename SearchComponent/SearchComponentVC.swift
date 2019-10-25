@@ -17,8 +17,6 @@ class SearchComponentVC: UIViewController {
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var animationView: AnimationView!
     @IBOutlet weak var clearButton: UIButton!
-    @IBOutlet weak var clearImage: UIImageView!
-    @IBOutlet weak var clearStackView: UIStackView!
     
     @IBAction func onClearClick(_ sender: UIButton) {
         switchResultVisibility()
@@ -51,11 +49,6 @@ class SearchComponentVC: UIViewController {
     }
     func setupTapRecognizers() {
         searchBar.addTarget(self, action: #selector(extendSearchBar), for: .editingDidBegin)
-        
-        let clearImageTap = UITapGestureRecognizer(target: self, action: #selector(switchResultVisibility))
-        clearImage.addGestureRecognizer(clearImageTap)
-        let clearStackTap = UITapGestureRecognizer(target: self, action: #selector(switchResultVisibility))
-               clearStackView.addGestureRecognizer(clearStackTap)
         
         let leftViewTap = UITapGestureRecognizer(target: self, action: #selector(extendSearchBar))
         searchBar.leftView?.addGestureRecognizer(leftViewTap)
@@ -152,7 +145,7 @@ extension SearchComponentVC {
         self.view.addConstraint(searchBarTrailingConstraint)
         self.searchBar.placeholder = Constants.ControlLiterals.searchBarPlaceholder
     }
-    @objc func switchResultVisibility() {
+    func switchResultVisibility() {
         resultLabel.isHidden = !resultLabel.isHidden
         animationView.isHidden = !animationView.isHidden
     }
