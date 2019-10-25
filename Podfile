@@ -5,7 +5,6 @@ target 'SearchComponent' do
     pod 'Alamofire'
     pod 'SwiftyJSON'
     pod 'lottie-ios'
-    pod 'ANZBreadcrumbsNavigationController'
 end
 
 post_install do |installer|

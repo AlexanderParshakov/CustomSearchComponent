@@ -9,7 +9,6 @@
 import UIKit
 import SwiftyJSON
 import Lottie
-import ANZBreadcrumbsNavigationController
 
 class SearchComponentVC: UIViewController {
     
@@ -19,9 +18,12 @@ class SearchComponentVC: UIViewController {
     @IBOutlet weak var clearButton: UIButton!
     
     @IBAction func onClearClick(_ sender: UIButton) {
-        switchResultVisibility()
+        // настроена "додуманная" мной логика, чтобы кнопка делала что-нибудь полезное
+        // (ибо с по заданию она должна очищать разделы каталога, но каталог не реализуется)
+        searchBar.text!.removeAll()
+        searchBar.resignFirstResponder()
+        shrinkAndLoad()
     }
-    
     @IBAction func didEndOnExit(_ sender: Any) {
         shrinkAndLoad()
     }
