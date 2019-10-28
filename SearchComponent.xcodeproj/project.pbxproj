@@ -20,6 +20,9 @@
 		A56F239B235B4A18002F7FD6 /* loadingAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = A56F239A235B4A18002F7FD6 /* loadingAnimation.json */; };
 		A56F239D235B5C14002F7FD6 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56F239C235B5C14002F7FD6 /* CustomSearchBar.swift */; };
 		A56F239F235B75E7002F7FD6 /* AnimationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56F239E235B75E7002F7FD6 /* AnimationHandler.swift */; };
+		A5E2A02B23673B7700F16EBF /* BreadCrumbsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E2A02823673B7700F16EBF /* BreadCrumbsView.swift */; };
+		A5E2A02C23673B7700F16EBF /* CrumbView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E2A02923673B7700F16EBF /* CrumbView.swift */; };
+		A5E2A02D23673B7700F16EBF /* CrumbSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E2A02A23673B7700F16EBF /* CrumbSeparator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +42,9 @@
 		A56F239A235B4A18002F7FD6 /* loadingAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loadingAnimation.json; sourceTree = "<group>"; };
 		A56F239C235B5C14002F7FD6 /* CustomSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
 		A56F239E235B75E7002F7FD6 /* AnimationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationHandler.swift; sourceTree = "<group>"; };
+		A5E2A02823673B7700F16EBF /* BreadCrumbsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreadCrumbsView.swift; sourceTree = "<group>"; };
+		A5E2A02923673B7700F16EBF /* CrumbView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrumbView.swift; sourceTree = "<group>"; };
+		A5E2A02A23673B7700F16EBF /* CrumbSeparator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrumbSeparator.swift; sourceTree = "<group>"; };
 		B9090BDB8919C37BF6C91764 /* Pods-SearchComponent.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SearchComponent.release.xcconfig"; path = "Target Support Files/Pods-SearchComponent/Pods-SearchComponent.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,6 +117,9 @@
 		A51BEC42235A60C20068F039 /* Custom UI */ = {
 			isa = PBXGroup;
 			children = (
+				A5E2A02A23673B7700F16EBF /* CrumbSeparator.swift */,
+				A5E2A02823673B7700F16EBF /* BreadCrumbsView.swift */,
+				A5E2A02923673B7700F16EBF /* CrumbView.swift */,
 				A56F239C235B5C14002F7FD6 /* CustomSearchBar.swift */,
 				A56F239E235B75E7002F7FD6 /* AnimationHandler.swift */,
 			);
@@ -258,6 +267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5E2A02D23673B7700F16EBF /* CrumbSeparator.swift in Sources */,
 				A56F239D235B5C14002F7FD6 /* CustomSearchBar.swift in Sources */,
 				A51BEC33235A54840068F039 /* SearchComponentVC.swift in Sources */,
 				A51BEC2F235A54840068F039 /* AppDelegate.swift in Sources */,
@@ -265,6 +275,8 @@
 				A51BEC4D235AEBD90068F039 /* NetworkManager.swift in Sources */,
 				A51BEC31235A54840068F039 /* SceneDelegate.swift in Sources */,
 				A56F2398235B1DAE002F7FD6 /* Constants.swift in Sources */,
+				A5E2A02B23673B7700F16EBF /* BreadCrumbsView.swift in Sources */,
+				A5E2A02C23673B7700F16EBF /* CrumbView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,7 +430,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.AlexanderParshakov.SearchComponent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -438,6 +450,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.AlexanderParshakov.SearchComponent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

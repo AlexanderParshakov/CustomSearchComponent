@@ -16,13 +16,16 @@ class SearchComponentVC: UIViewController {
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var animationView: AnimationView!
     @IBOutlet weak var clearButton: UIButton!
+    @IBOutlet weak var breadcrumbsView: BreadCrumbsView!
     
     @IBAction func onClearClick(_ sender: UIButton) {
-        // настроена "додуманная" мной логика, чтобы кнопка делала что-нибудь полезное
-        // (ибо с по заданию она должна очищать разделы каталога, но каталог не реализуется)
-        searchBar.text!.removeAll()
-        searchBar.resignFirstResponder()
-        shrinkAndLoad()
+        
+        for (index, view) in breadcrumbsView.crumbViews.enumerated() {
+            if index > 0 {
+                guard let currentTitle = view.currentTitle else { return }
+                breadcrumbsView.removeCrumb(currentTitle)
+            }
+        }
     }
     @IBAction func didEndOnExit(_ sender: Any) {
         shrinkAndLoad()
@@ -41,8 +44,8 @@ class SearchComponentVC: UIViewController {
         setupVisibility()
         setupConstraints()
         setupTapRecognizers()
+        setupBreadcrumbs()
     }
-    
     func setupVisibility() {
         animationView.isHidden = true
     }
@@ -61,10 +64,17 @@ class SearchComponentVC: UIViewController {
         let viewTap = UITapGestureRecognizer(target: self, action: #selector(shrinkAndLoadWithoutBarAnimation))
         view.addGestureRecognizer(viewTap)
     }
+    func setupBreadcrumbs() {
+        breadcrumbsView.textFont = UIFont.systemFont(ofSize: 13)
+        breadcrumbsView.addCrumb("Приготовление")
+        breadcrumbsView.addCrumb("Посуда для чая и кофе")
+        breadcrumbsView.addCrumb("Чайники")
+        breadcrumbsView.delegate = self
+    }
 }
 
 
-// Search Bar handles
+// MARK: - Search Bar handles
 extension SearchComponentVC: UITextFieldDelegate {
     
     @objc func extendSearchBar() {
@@ -106,7 +116,7 @@ extension SearchComponentVC: UITextFieldDelegate {
     }
 }
 
-// retrieving data
+// MARK: - retrieving data
 extension SearchComponentVC {
     
     func loadData() {
@@ -130,7 +140,7 @@ extension SearchComponentVC {
     }
 }
 
-// correcting UI
+// MARK: - correcting UI
 extension SearchComponentVC {
     
     func prepareToShrink() {
@@ -154,4 +164,20 @@ extension SearchComponentVC {
 }
 
 
-
+// MARK: - breadcrumbs
+extension SearchComponentVC: CrumbListViewDelegate {
+    
+    func crumbPressed(_ title: String, crumbView: CrumbView, sender: BreadCrumbsView) {
+        var cutIndex: Int = breadcrumbsView.crumbViews.count + 1
+        
+        for (index, view) in breadcrumbsView.crumbViews.enumerated() {
+            if view == crumbView {
+                cutIndex = index
+            }
+            if index > cutIndex {
+                guard let currentTitle = view.currentTitle else { return }
+                breadcrumbsView.removeCrumb(currentTitle)
+            }
+        }
+    }
+}

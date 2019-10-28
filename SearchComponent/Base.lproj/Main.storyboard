@@ -58,13 +58,14 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WCy-dt-vKO">
-                                <rect key="frame" x="284" y="105" width="115" height="34"/>
+                                <rect key="frame" x="319" y="105" width="80" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="7tE-Vn-Sr2"/>
-                                    <constraint firstAttribute="width" constant="115" id="kps-8I-08J"/>
+                                    <constraint firstAttribute="height" constant="20" id="7tE-Vn-Sr2"/>
+                                    <constraint firstAttribute="width" constant="80" id="kps-8I-08J"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <inset key="titleEdgeInsets" minX="-40" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="92" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="63" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Очистить" image="clear">
                                     <color key="titleColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -72,13 +73,71 @@
                                     <action selector="onClearClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3Kg-Me-jyU"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CGX-OO-BLr" customClass="BreadCrumbsView" customModule="SearchComponent" customModuleProvider="target">
+                                <rect key="frame" x="10" y="110" width="304" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="9D2-Ct-oML"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                        <color key="value" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="paddingY">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="paddingX">
+                                        <real key="value" value="7"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="marginX">
+                                        <real key="value" value="-2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedTextColor">
+                                        <color key="value" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="marginY">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="crumbBackgroundColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="separatorIconSize">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="separatorIconLineWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="separatorIconLineColor">
+                                        <color key="value" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="enableSeparator" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="CGX-OO-BLr" firstAttribute="top" secondItem="oWd-cz-xHe" secondAttribute="bottom" constant="10" id="4v9-1F-pNu"/>
                             <constraint firstItem="WCy-dt-vKO" firstAttribute="top" secondItem="oWd-cz-xHe" secondAttribute="bottom" constant="5" id="6p1-sQ-sAr"/>
                             <constraint firstItem="b1v-92-SFa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LAc-9j-wtQ"/>
+                            <constraint firstItem="WCy-dt-vKO" firstAttribute="leading" secondItem="CGX-OO-BLr" secondAttribute="trailing" constant="5" id="MDf-rk-kBc"/>
                             <constraint firstItem="G2A-IZ-dW0" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="MRW-h9-ywe"/>
                             <constraint firstItem="G2A-IZ-dW0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TiX-ve-F2e"/>
+                            <constraint firstItem="CGX-OO-BLr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="UXr-4E-h5q"/>
                             <constraint firstItem="b1v-92-SFa" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Um1-5u-Gl0"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WCy-dt-vKO" secondAttribute="trailing" constant="15" id="VY9-Bh-EQa"/>
                             <constraint firstItem="oWd-cz-xHe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="WKG-GW-MPA"/>
@@ -88,6 +147,7 @@
                     </view>
                     <connections>
                         <outlet property="animationView" destination="G2A-IZ-dW0" id="IwK-Ia-mt9"/>
+                        <outlet property="breadcrumbsView" destination="CGX-OO-BLr" id="IHX-2m-vZJ"/>
                         <outlet property="clearButton" destination="WCy-dt-vKO" id="aHk-b2-xWr"/>
                         <outlet property="resultLabel" destination="b1v-92-SFa" id="dgx-EP-5wj"/>
                         <outlet property="searchBar" destination="oWd-cz-xHe" id="aEG-8x-p3R"/>
