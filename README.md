@@ -11,4 +11,6 @@ This is an application with a slide-out and slide-in search bar that addresses a
 
 Here is how the app works:
 
-![alt-text-1](Images/GIF 1.gif "Searching and clearing breadcrumbs with a button") ![alt-text-2](Images/GIF 2.gif "Clearing breadcrumbs with a pick.")
+Searching and clearing with a button|  Clearing with a pick
+:----------------------------------:|:-------------------------:
+![](Images/GIF 1.gif)               |  ![](Images/GIF 2.gif)
