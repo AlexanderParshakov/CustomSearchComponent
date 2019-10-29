@@ -16,8 +16,11 @@ Pressing the **Clear** button gets the Navigation Chain cleared up to the root l
 
 ## Usage
 
-Here is how the app works:
+### Search
+<img src="Images/Search.gif" width= 300> 
 
-Searching | Clearing with a pick |  Clearing with a button
-:----------------------------------:|:-------------------------:|:-------------------------:
-<img src="Images/Search.gif" width= 300> |<img src="Images/GIF 1.gif" width= 300> |  <img src="Images/GIF 2.gif" width= 300>
+### Clearing with a selection
+<img src="Images/GIF 1.gif" width= 300> 
+
+### Clearing with the button
+<img src="Images/GIF 2.gif" width= 300>
