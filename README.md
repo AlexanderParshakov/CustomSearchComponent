@@ -13,4 +13,4 @@ Here is how the app works:
 
 Searching and clearing with a button|  Clearing with a pick
 :----------------------------------:|:-------------------------:
-![](Images/GIF 1.gif)               |  ![](Images/GIF 2.gif)
+<img src="Images/GIF 1.gif" width= 300>|  <img src="Images/GIF 1.gif" width= 300>
