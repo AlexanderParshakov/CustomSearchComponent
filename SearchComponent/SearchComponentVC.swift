@@ -17,6 +17,7 @@ class SearchComponentVC: UIViewController {
     @IBOutlet weak var animationView: AnimationView!
     @IBOutlet weak var clearButton: UIButton!
     @IBOutlet weak var breadcrumbsView: BreadCrumbsView!
+    @IBOutlet weak var clearButtonWidthConstraint: NSLayoutConstraint!
     
     @IBAction func onClearClick(_ sender: UIButton) {
         
@@ -52,6 +53,7 @@ class SearchComponentVC: UIViewController {
     }
     func setupConstraints() {
         searchBarTrailingConstraint = NSLayoutConstraint(item: self.searchBar!, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: -10)
+        clearButtonWidthConstraint.constant = 0
     }
     func setupTapRecognizers() {
         searchBar.addTarget(self, action: #selector(extendSearchBar), for: .editingDidBegin)
@@ -155,6 +157,7 @@ extension SearchComponentVC {
     func prepareToShrink() {
         self.searchBar.placeholder?.removeAll()
         self.view.removeConstraint(searchBarTrailingConstraint)
+        clearButtonWidthConstraint.constant = 0
         if searchBar.text?.count == 0 {
             searchBar.rightViewMode = .never
         }
@@ -165,6 +168,7 @@ extension SearchComponentVC {
     func prepareToExtend() {
         self.view.addConstraint(searchBarTrailingConstraint)
         self.searchBar.placeholder = Constants.ControlLiterals.searchBarPlaceholder
+        clearButtonWidthConstraint.constant = 80
     }
     func switchResultVisibility() {
         resultLabel.isHidden = !resultLabel.isHidden

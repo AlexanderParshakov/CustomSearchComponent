@@ -30,7 +30,7 @@
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="oWd-cz-xHe" customClass="CustomSearchBar" customModule="SearchComponent" customModuleProvider="target">
-                                <rect key="frame" x="10" y="54" width="42" height="46"/>
+                                <rect key="frame" x="10" y="54" width="40" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="1Er-gj-eGS"/>
                                     <constraint firstAttribute="height" constant="46" id="bE3-Zr-joW"/>
@@ -149,6 +149,7 @@
                         <outlet property="animationView" destination="G2A-IZ-dW0" id="IwK-Ia-mt9"/>
                         <outlet property="breadcrumbsView" destination="CGX-OO-BLr" id="IHX-2m-vZJ"/>
                         <outlet property="clearButton" destination="WCy-dt-vKO" id="aHk-b2-xWr"/>
+                        <outlet property="clearButtonWidthConstraint" destination="kps-8I-08J" id="eRg-Jg-8R5"/>
                         <outlet property="resultLabel" destination="b1v-92-SFa" id="dgx-EP-5wj"/>
                         <outlet property="searchBar" destination="oWd-cz-xHe" id="aEG-8x-p3R"/>
                     </connections>
