@@ -10,7 +10,7 @@ Pressing the **Clear** button gets the Navigation Chain cleared up to the root l
 * Lottie
 
 ## Breadcrumbs implementation:
-* Tag-based component (ElaWorks)
+* Tag-based component
 * Clickable navigation icons
 * Clickable crumbs for navigation
 
