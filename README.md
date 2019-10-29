@@ -7,10 +7,15 @@ This is an application with a slide-out and slide-in search bar that addresses a
 * SwiftyJSON
 * Lottie
 
+## Breadcrumbs implementation:
+* Tag-based component (ElaWorks)
+* Clickable navigation icons
+* Clickable crumbs for navigation
+
 ## Usage
 
 Here is how the app works:
 
 Searching and clearing with a button|  Clearing with a pick
 :----------------------------------:|:-------------------------:
-<img src="Images/GIF 1.gif" width= 300>|  <img src="Images/GIF 1.gif" width= 300>
+<img src="Images/GIF 1.gif" width= 300>|  <img src="Images/GIF 2.gif" width= 300>
