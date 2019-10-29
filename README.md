@@ -23,4 +23,4 @@ Pressing the **Clear** button gets the Navigation Chain cleared up to the root l
 <img src="Images/GIF 1.gif" width= 300> 
 
 ### Clearing with the button
-<img src="Images/GIF 3.gif" width= 300>
+<img src="Images/GIF 2.gif" width= 300>
