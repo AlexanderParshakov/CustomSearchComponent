@@ -48,6 +48,7 @@ class SearchComponentVC: UIViewController {
     }
     func setupVisibility() {
         animationView.isHidden = true
+        clearButton.isHidden = true
     }
     func setupConstraints() {
         searchBarTrailingConstraint = NSLayoutConstraint(item: self.searchBar!, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: -10)
@@ -65,7 +66,7 @@ class SearchComponentVC: UIViewController {
         view.addGestureRecognizer(viewTap)
     }
     func setupBreadcrumbs() {
-        breadcrumbsView.textFont = UIFont.systemFont(ofSize: 13)
+        breadcrumbsView.textFont = UIFont.systemFont(ofSize: 11)
         breadcrumbsView.addCrumb("Приготовление")
         breadcrumbsView.addCrumb("Посуда для чая и кофе")
         breadcrumbsView.addCrumb("Чайники")
@@ -80,17 +81,20 @@ extension SearchComponentVC: UITextFieldDelegate {
     @objc func extendSearchBar() {
         defer {
             isSearchBarOpen = true
+            clearButton.isHidden = false
         }
         self.searchBar.becomeFirstResponder()
         prepareToExtend()
         UIView.animate(withDuration: Constants.UISettings.searchBarAnimationDuration) {
             self.view.layoutIfNeeded()
+            self.breadcrumbsView.textFont = UIFont.systemFont(ofSize: 13)
         }
     }
     @objc func shrinkAndLoadWithoutBarAnimation() {
         if isSearchBarOpen {
             defer {
                 isSearchBarOpen = false
+                clearButton.isHidden = true
             }
             if hasSearchChanged {
                 loadData()
@@ -98,12 +102,16 @@ extension SearchComponentVC: UITextFieldDelegate {
             prepareToShrink()
             searchBar.resignFirstResponder()
             self.view.layoutIfNeeded()
+            UIView.animate(withDuration: Constants.UISettings.searchBarAnimationDuration) {
+                self.breadcrumbsView.textFont = UIFont.systemFont(ofSize: 11)
+            }
         }
     }
     func shrinkAndLoad() {
         if isSearchBarOpen {
             defer {
                 isSearchBarOpen = false
+                clearButton.isHidden = true
             }
             if hasSearchChanged {
                 loadData()
@@ -111,6 +119,7 @@ extension SearchComponentVC: UITextFieldDelegate {
             prepareToShrink()
             UIView.animate(withDuration: Constants.UISettings.searchBarAnimationDuration) {
                 self.view.layoutIfNeeded()
+                self.breadcrumbsView.textFont = UIFont.systemFont(ofSize: 11)
             }
         }
     }
