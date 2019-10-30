@@ -9,7 +9,7 @@
 import Foundation
 import Lottie
 
-final class AnimationHandler {
+struct AnimationHandler {
     
     private init() {}
     

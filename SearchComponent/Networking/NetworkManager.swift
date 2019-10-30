@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-final class NetworkManager {
+struct NetworkManager {
     
     private init() {}
     
